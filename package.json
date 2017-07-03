@@ -1,0 +1,14 @@
+{
+  "name": "worldbrain-data-generator",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:poltak/worldbrain-data-generator.git",
+  "author": "Jonathan Poltak Samosir <jonathan.samosir@gmail.com>",
+  "license": "Unlicense",
+  "scripts":{
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "faker": "^4.1.0"
+  }
+}
