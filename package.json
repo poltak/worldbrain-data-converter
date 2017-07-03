@@ -1,6 +1,6 @@
 {
   "name": "worldbrain-data-converter",
-  "version": "1.0.0",
+  "version": "0.0.1",
   "main": "index.js",
   "repository": "git@github.com:poltak/worldbrain-data-generator.git",
   "author": "Jonathan Poltak Samosir <jonathan.samosir@gmail.com>",
