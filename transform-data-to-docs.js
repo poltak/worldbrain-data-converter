@@ -1,9 +1,10 @@
 const faker = require('faker')
 
-const transformToPageDoc = pageData => ({
+const transformToPageDoc = (pageData, isStub) => ({
   _id: `page/${faker.random.number(10000)}/${faker.random.number(10000)}`,
   url: pageData.url,
   title: pageData.title,
+  isStub,
   content: {
     title: pageData.title,
     canonicalUrl: pageData.url,
@@ -29,9 +30,9 @@ const transformToBookmarkDoc = (pageData, assocPageDocId) => ({
 
 const genVisitTimeArr = numVisits => Array.from({ length: numVisits }, () => new Date(faker.date.past()).getTime())
 
-const transformToDocs = (pageData, maxVisits = 10) => {
+const transformToDocs = (pageData, setPageStub = false, maxVisits = 10) => {
   // Page data should be same format as doc
-  const pageDoc = transformToPageDoc(pageData)
+  const pageDoc = transformToPageDoc(pageData, setPageStub)
 
   // Make some visit docs for the page
   const numVisits = Math.floor(Math.random() * maxVisits)
