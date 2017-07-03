@@ -14,20 +14,23 @@ const onInputData = outputStream => data =>
 
 const onInputFinish = outputStream => () => {
   console.log('Conversion finished.')
-  outputStream.end()
+
+  if (outputStream !== process.stdout) {
+    outputStream.end() // Not sure if neccessary
+  }
 }
 
 function convert({
-  input = 'test.csv',
-  output = 'test.txt',
+  input,
+  output,
   maxVisits = 10,
   parsingOpts = {
     headers: true,
     ignoreEmpty: true,
   },
 }) {
-  const inputStream = fs.createReadStream(input)
-  const outputStream = fs.createWriteStream(output)
+  const inputStream = input ? fs.createReadStream(input) : process.stdin
+  const outputStream = output ? fs.createWriteStream(output) : process.stdout
 
   // Set up conversion stream
   const converterStream = csv(parsingOpts)
