@@ -24,16 +24,13 @@ function convert({
   input,
   output,
   maxVisits = 10,
-  parsingOpts = {
-    headers: true,
-    ignoreEmpty: true,
-  },
+  parsingOpts = {},
 }) {
   const inputStream = input ? fs.createReadStream(input) : process.stdin
   const outputStream = output ? fs.createWriteStream(output) : process.stdout
 
   // Set up conversion stream
-  const converterStream = csv(parsingOpts)
+  const converterStream = csv(Object.assign({}, { headers: true, ignoreEmpty: true }, parsingOpts))
   converterStream.on('data', onInputData(outputStream))
   converterStream.on('end', onInputFinish(outputStream))
 
