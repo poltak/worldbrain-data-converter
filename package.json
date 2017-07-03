@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "faker": "^4.1.0",
-    "fast-csv": "^2.4.0"
+    "fast-csv": "^2.4.0",
+    "node-getopt": "^0.2.3"
   }
 }

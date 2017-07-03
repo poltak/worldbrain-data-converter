@@ -60,6 +60,10 @@ is-extended@0.0.10, is-extended@~0.0.3, is-extended@~0.0.8:
   dependencies:
     extended "~0.0.3"
 
+node-getopt@^0.2.3:
+  version "0.2.3"
+  resolved "https://registry.yarnpkg.com/node-getopt/-/node-getopt-0.2.3.tgz#69abbc7e5400600d1dacf00db8cb79b5487e924b"
+
 object-extended@0.0.7:
   version "0.0.7"
   resolved "https://registry.yarnpkg.com/object-extended/-/object-extended-0.0.7.tgz#84fd23f56b15582aeb3e88b05cb55d2432d68a33"
