@@ -13,7 +13,19 @@ const CLI_ARGS = [
 
 const args = new Getopt(CLI_ARGS)
 args.bindHelp()
+const usage = () => {
+  console.warn(args.getHelp())
+  process.exit(1)
+}
+
 
 const { options } = args.parseSystem()
 
-convert(options)
+// Validate and parse CLI args
+const bookmarkChance = options.bookmarkChance ? Number(options.bookmarkChance) : 1
+if (isNaN(bookmarkChance) || bookmarkChance < 0 || bookmarkChance > 100) usage()
+
+const maxVisits = options.maxVisits ? Number(options.maxVisits) : 10
+if (isNaN(maxVisits) || maxVisits < 0) usage()
+
+convert(Object.assign({}, options, { bookmarkChance, maxVisits }))
