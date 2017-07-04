@@ -1,10 +1,23 @@
 {
   "name": "worldbrain-data-converter",
+  "description": "Tool to convert from CSV files containing page data to WorldBrain web extension importable files.",
   "version": "0.0.1",
   "main": "index.js",
-  "repository": "git@github.com:poltak/worldbrain-data-generator.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/poltak/worldbrain-data-converter.git"
+  },
   "author": "Jonathan Poltak Samosir <jonathan.samosir@gmail.com>",
   "license": "Unlicense",
+  "keywords": [
+    "worldbrain",
+    "webmemex",
+    "convert",
+    "cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/poltak/worldbrain-data-converter/issues"
+  },
   "scripts": {
     "start": "node index.js"
   },
