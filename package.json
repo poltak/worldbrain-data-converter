@@ -1,8 +1,11 @@
 {
   "name": "worldbrain-data-converter",
   "description": "Tool to convert from CSV files containing page data to WorldBrain web extension importable files.",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "main": "index.js",
+  "bin": {
+    "worldbrain-data-converter": "./index.js"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/poltak/worldbrain-data-converter.git"

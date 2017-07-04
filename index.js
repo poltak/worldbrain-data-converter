@@ -1,3 +1,4 @@
+#! /usr/bin/env node
 const Getopt = require('node-getopt')
 
 const convert = require('./converter')
