@@ -13,9 +13,8 @@ const onInputData = (outputStream, transformArgs) => data =>
 
 
 const onInputFinish = outputStream => () => {
-  console.log('Conversion finished.')
-
   if (outputStream !== process.stdout) {
+    console.log('Conversion finished')
     outputStream.end() // Not sure if neccessary
   }
 }
