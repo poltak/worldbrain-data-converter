@@ -31,10 +31,10 @@ Or simply redirect IO files on stdout/stdin:
 $ worldbrain-data-converter < /path/to/file.csv > /path/to/output.txt
 ```
 
-Outputting to 50MB batches named: `output_aa`, `output_ab`, etc:
+Outputting to batches of 10000 docs/lines named: `output_aa`, `output_ab`, etc:
 
 ```bash
-$ worldbrain-data-converter < /path/to/file.csv | split -b 50m - output_
+$ worldbrain-data-converter < /path/to/file.csv | split -l 10000 - output_
 ```
 
 Full options:
@@ -80,10 +80,10 @@ _Maybe will have a flag to disable data generation of these, and add support in 
 ### Split output for importing into extension
 
 As the extension is currently running entirely within the browser, things like memory management with file IO
-are painful. It's recommended to pipe the output of this script to something like [`split`](https://en.wikipedia.org/wiki/Split_(Unix)) to split up the output files.
+are painful. It's recommended to pipe the output of this script to something like [`split`](https://en.wikipedia.org/wiki/Split_(Unix)) to split up the output files. Split should happen per line, as the output format is new-line delimited JSON. Splitting by bytes is not handled by the extension's import process.
 
 Example:
 
 ```bash
-$ worldbrain-data-converter < /path/to/file.csv | split -b 50m - ${OUTPUT_FILE_PREFIX}
+$ worldbrain-data-converter < /path/to/file.csv | split -l ${DOCS_PER_FILE} - ${OUTPUT_FILE_PREFIX}
 ```

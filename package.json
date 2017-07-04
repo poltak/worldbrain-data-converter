@@ -1,7 +1,7 @@
 {
   "name": "worldbrain-data-converter",
   "description": "Tool to convert from CSV files containing page data to WorldBrain web extension importable files.",
-  "version": "0.0.4",
+  "version": "0.0.6",
   "main": "index.js",
   "bin": {
     "worldbrain-data-converter": "./index.js"

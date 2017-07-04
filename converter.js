@@ -9,7 +9,7 @@ const transformToDocs = require('./transform-data-to-docs')
  */
 const onInputData = (outputStream, transformArgs) => data =>
   transformToDocs(data, transformArgs)
-    .forEach(doc => outputStream.write(`${JSON.stringify(doc)}\n`))
+    .forEach(doc => outputStream.write(`${JSON.stringify(doc)}\n`, 'UTF-8'))
 
 
 const onInputFinish = outputStream => () => {
