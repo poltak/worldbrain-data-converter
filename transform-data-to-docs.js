@@ -30,7 +30,9 @@ const transformToBookmarkDoc = (pageData, assocPageDocId) => ({
 
 const genVisitTimeArr = numVisits => Array.from({ length: numVisits }, () => new Date(faker.date.past()).getTime())
 
-const transformToDocs = (pageData, setPageStub = false, maxVisits = 10) => {
+const transformToDocs = (pageData, setPageStub = false, bookmarkChance = 1, maxVisits = 10) => {
+  const bookmarkThreshold = 1 - bookmarkChance / 100
+
   // Page data should be same format as doc
   const pageDoc = transformToPageDoc(pageData, setPageStub)
 
@@ -39,7 +41,7 @@ const transformToDocs = (pageData, setPageStub = false, maxVisits = 10) => {
   const visitDocs = genVisitTimeArr(numVisits).map(transformToVisitDoc(pageData, pageDoc._id))
 
   // Chance to make a bookmark doc
-  const bookmarkDocs = Math.random() > 0.95 ? [transformToBookmarkDoc(pageData, pageDoc._id)] : []
+  const bookmarkDocs = Math.random() > bookmarkThreshold ? [transformToBookmarkDoc(pageData, pageDoc._id)] : []
 
   return [
     pageDoc,

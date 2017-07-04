@@ -7,8 +7,8 @@ const transformToDocs = require('./transform-data-to-docs')
  * Input should be a single CSV row at a time. From one row we can transform a number of documents,
  * each of which will get serialised to JSON and written to the output stream.
  */
-const onInputData = (outputStream, setPageStubs) => data =>
-  transformToDocs(data, setPageStubs)
+const onInputData = (outputStream, ...transformArgs) => data =>
+  transformToDocs(data, ...transformArgs)
     .forEach(doc => outputStream.write(`${JSON.stringify(doc)}\n`))
 
 
@@ -24,6 +24,7 @@ function convert({
   input,
   output,
   maxVisits = 10,
+  bookmarkChance = 1,
   parsingOpts = {},
   imports: setPageStubs = false,
 }) {
@@ -32,7 +33,7 @@ function convert({
 
   // Set up conversion stream
   const converterStream = csv(Object.assign({}, { headers: true, ignoreEmpty: true }, parsingOpts))
-  converterStream.on('data', onInputData(outputStream, setPageStubs))
+  converterStream.on('data', onInputData(outputStream, setPageStubs, bookmarkChance))
   converterStream.on('end', onInputFinish(outputStream))
 
   // Start piping the input file over the conversion stream
